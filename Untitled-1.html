@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 去除起始样式 */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* 头部导航 */
+        #header {
+            background-color: black;
+        }
+
+        #container {
+            padding: 0 120px;
+        }
+
+        #head {
+            display: flex;
+            flex-flow: row;
+        }
+
+        /* logo */
+        #head>img {
+            border: 0;
+            height: 80px;
+            float: left;
+        }
+
+
+        /* 导航栏左边 */
+        #nav1 {
+            margin: 20px;
+            flex-grow: 3;
+            display: flex;
+            flex-flow: row;
+        }
+
+        #nav1>li {
+            flex-grow: 1;
+            font-size: 25px;
+            margin: auto;
+        }
+
+        #nav1>li>a {
+            text-align: center;
+        }
+
+        #nav1>li>a:hover {
+            color: orange;
+        }
+
+        /* 中间 */
+        #nav2 {
+            flex-grow: 3;
+            display: flex;
+            flex-flow: row;
+        }
+
+        #nav2>li {
+            flex-grow: 1;
+            font-size: 15px;
+            margin: auto;
+            display: flex;
+            text-align: center;
+        }
+
+        #nav2>li>a:hover {
+            color: orange;
+        }
+
+        #nav2>li>a {
+            text-align: center;
+        }
+
+        #nav2>li>.tubiao {
+            border: 0;
+            width: 15px;
+            height: 15px;
+            background: url(1.png);
+            background-position: -230px -26px;
+        }
+
+        /* 右边 */
+        #nav3 {
+            flex-grow: 1;
+            display: flex;
+            flex-flow: row;
+        }
+
+        #nav3>li,
+        #nav3>#xiala {
+            flex-grow: 1;
+            font-size: 20px;
+            margin: auto;
+        }
+
+        #nav3>li>a,
+        #nav3>#xiala>a {
+            text-align: center;
+        }
+
+        #nav3>li>a:hover,
+        #nav3>#xiala>a:hover {
+            color: orange;
+        }
+
+        #content {
+            display: none;
+            position: absolute;
+        }
+
+        #content>a {
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+        }
+
+        .content>a:hover {
+            background-color: black;
+        }
+
+        .btn:hover>.content {
+            display: block;
+        }
+
+        /* 搜索框 */
+        #sousuo {
+            position: relative;
+            width: 180px;
+            height: 25px;
+        }
+
+
+        /* 中心 */
+        #container2 {
+            padding: 0 240px;
+        }
+
+        #jiemian {
+            position: relative;
+        }
+
+        /* 播放器 */
+        #bofangqi {
+            height: 400px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 歌词 */
+        #geci {
+            margin-left: 70px;
+            text-align: center;
+            width: 500px;
+            position: relative;
+        }
+
+        .title {
+            margin-left: 50px;
+            margin-top: 75px;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        #xinxi {
+            margin-left: 50px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .time {
+            margin-left: 50px;
+        }
+
+        .fenge {
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        #xinxitubiao {
+            width: 14px;
+            height: 14px;
+            margin-top: 5px;
+            margin-left: 5px;
+            background: url(信息.jpg);
+        }
+
+        .content {
+            width: 80%;
+            height: 50%;
+            margin-left: 75px;
+            line-height: 30px;
+            overflow: hidden;
+
+        }
+
+        .zhong {
+            color: orange;
+            margin-left: 10px;
+        }
+
+        .qing {
+            margin-left: 10px;
+        }
+
+        #haibao {
+            width: 100%;
+            position: relative;
+            margin-top: 75px;
+            margin-right: 100px;
+        }
+
+
+        .middle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: 65px;
+            left: 65px;
+            margin: auto;
+            background-color: white;
+            z-index: 3;
+        }
+
+        .small {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            top: 70px;
+            left: 70px;
+            margin: auto;
+            background-color: white;
+            z-index: 4;
+            overflow: hidden;
+            box-shadow: 0 0 3px 3px #000000;
+        }
+
+        #xiyangyang {
+            border-radius: 50%;
+            border: 2px;
+            border: black;
+            animation: change 6s linear infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes change {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            50% {
+                -webkit-transform: rotate(180deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        #right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #control {
+            height: 40px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .play {
+            width: 40px;
+            height: 40px;
+            background: url(控制.jpg) -110px 0px;
+            border: 0;
+        }
+
+        .zan {
+            width: 40px;
+            height: 40px;
+            background: url(控制.jpg) -207px 0px;
+            border: 0;
+        }
+
+        #opacity {
+            color: gray;
+        }
+
+        .bujingyin {
+            width: 20px;
+            height: 20px;
+            background: url(控制.jpg) -44px 0px;
+        }
+
+        .jingyin {
+            height: 20px;
+            width: 25px;
+            background: url(控制.jpg) -69px 0px;
+        }
+
+        .prograssBar {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffcd2d;
+            margin-top: 2.5px;
+            transform: translate(-50%, -50%);
+        }
+
+        .schedule_btn {
+            width: 200px;
+            height: 4px;
+            background: gray;
+            position: relative;
+            float: left;
+        }
+
+        #download {
+            border: 0;
+            width: 198px;
+            height: 40px;
+            display: flex;
+            background: url(控制.jpg) 0px -48px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #downbtn {
+            width: 19px;
+            height: 18px;
+            background: url(控制.jpg) 0px 0px;
+        }
+
+        /* 评论区 */
+        #container3 {
+            padding: 0 360px;
+        }
+
+        .title2 {
+            color: gray;
+            font-size: 5px;
+        }
+
+        #ping {
+            display: flex;
+        }
+
+        #touxiang {
+            width: 60px;
+            height: 60px;
+            background: url(头像.jpg) 0 0;
+        }
+
+        .touxiang1 {
+            margin-top: 25px;
+        }
+
+        .pinglunqu {
+            margin-top: 25px;
+            width: 600px;
+            margin-left: 25px;
+        }
+
+        .yishuru {
+            color: gray;
+            font-size: 5px;
+            margin-top: 25px;
+            margin-left: 350px;
+            margin-right: 15px;
+        }
+
+        .biaoqing {
+            margin-top: 25px;
+            border: 0;
+        }
+
+        #yishuruzishu {
+            display: flex;
+            align-items: center;
+            margin-left: 100px;
+        }
+
+        #fabu {
+            border: 0;
+            margin-top: 25px;
+            width: 150px;
+            height: 50px;
+            background-color: orange;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #P {
+            position: relative;
+        }
+
+        #P1 {
+            display: flex;
+            position: relative;
+        }
+
+        #user {
+            position: absolute;
+            margin-top: 25px;
+            margin-left: 25px;
+            color: orange;
+        }
+
+        #Pfenxiang {
+            position: absolute;
+            margin-top: 25px;
+            right: 50px;
+            color: gray;
+        }
+
+        #wen {
+            position: absolute;
+            margin-top: 55px;
+            margin-left: 25px;
+        }
+
+        #Ptime {
+            position: absolute;
+            margin-top: 90px;
+            margin-left: 25px;
+            color: gray;
+            font-size: 15px;
+        }
+
+        #huifuP {
+            width: 100px;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 85px;
+            right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="mymusic">
+        <source src="喜羊羊.mp3" type="audio/mp3">
+    </audio>
+    <div id="header">
+        <div id="container">
+            <div id="head">
+                <img src="logo.jpg">
+                <ul id="nav1">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">榜单</a></li>
+                    <li><a href="#">歌手</a></li>
+                    <li><a href="#">下载酷我客户端</a></li>
+                </ul>
+                <ul id="nav2">
+                    <li>
+                        <div class="tubiao"></div><a href="#">美女秀</a>
+                    </li>
+                    <li>
+                        <div class="tubiao"></div><a href="#">酷我耳机</a>
+                    </li>
+                    <li>
+                        <div class="tubiao"></div><a href="#">VIP听</a>
+                    </li>
+                    <li>
+                        <div class="tubiao"></div><a href="#">i听</a>
+                    </li>
+                </ul>
+                <ul id="nav3">
+                    <li><a href="#">更多服务</a></li>
+                    <li><a href="#">登录</a></li>
+                    <div id="xiala"><a href="#" class="btn">↑</a>
+                    </div>
+                </ul>
+                <div id="sousuo">
+                    <img src="搜索框.png" fit="cover" style="position:absolute ;left:0px;top: 30px;">
+                    <div style="position: absolute;top: 30px;color: gray;"><span>找到好音乐</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container2">
+        <div id="jiemian">
+            <div id="bofangqi">
+                <div id="geci">
+                    <div id="title">
+                        <p class="title">喜羊羊</p>
+                        <div id="xinxi">
+                            <div>专辑：</div>
+                            <div class="zhong">儿歌大全.</div>
+                            <div class="qing">歌手：</div>
+                            <div class="zhong">华语群星.</div>
+                            <div class="qing">分享.</div>
+                            <div id="xinxitubiao"></div>
+                            <div class="zhong">评论.</div>
+                        </div>
+                        <p class="time">上传时间：2015-10-02歌曲来源：民大相思湖网球社</p>
+                    </div>
+                    <div class="fenge">
+                        ____________________________________________________________________________
+                    </div>
+                    <div class="content">
+                        <p>喜羊羊</p>
+                        <p>美羊羊</p>
+                        <p>懒羊羊</p>
+                        <p>沸羊羊</p>
+                        <p>软绵绵</p>
+                        <p>红太郎</p>
+                        <p>灰太狼</p>
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="haibao">
+                        <div class="big"></div>
+                        <div class="middle"></div>
+                        <img id="xiyangyang" src="喜羊羊.jpg">
+                        <div class="small"></div>
+                    </div>
+                    <div id="control">
+                        <div class="play" id="wp_playBtn"></div>
+                        <div id="wp_bufBar">
+                            <a href="#" class="schedule_btn" id="wp_processBtn"></a>
+                            <div class="prograssBar" id="wp_processBar" style="left: 730px;"></div>
+
+                        </div>
+                        <div>
+                            <p id="opacity">00:00</p>
+                        </div>
+                        <div class="bujingyin" id="mute"></div>
+                    </div>
+                    <button id="download">
+                        <div id="downbtn"></div>
+                        <p>免费下载这首歌</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container3">
+        <div id="pinglun">
+            <div class="pingluntitle">
+                <span>评论</span>
+                <span id="num1" class="title2"></span>
+                <span class="title2">条评论</span>
+                <p class="fenge">
+                    _________________________________________________________________________________________________
+                </p>
+            </div>
+            <div id="ping">
+                <div id="touxiang" class="touxiang1"></div>
+                <textarea class="pinglunqu" placeholder="分享你的音乐见解..." id="area" cols="30" rows="10"></textarea>
+            </div>
+            <div id="yishuruzishu">
+                <input type="button" class="biaoqing">😀
+                <div class="yishuru">
+                    <span>已输入</span>
+                    <span id="num2">0</span>
+                    <span>个字</span>
+                </div>
+                <input type="button" value="评论" id="fabu">
+            </div>
+        </div>
+        <span>精彩评论</span>
+        <p class="fenge">
+            _________________________________________________________________________________________________
+        </p>
+        <div id="louceng">
+            <div id="pinglunlouceng">
+                <ul>
+                    <li>
+                        <div id="P">
+                            <div id="P1">
+                                <div class="touxiang1"><img src="头像.jpg" id="touxiang" alt=""></div>
+                                <div>
+                                    <div id="user">username</div>
+                                    <div id="Pfenxiang"><span>分享</span></div>
+                                    <div id="wen">TOO</div>
+                                    <div id="Ptime">00</div>
+                                    <div id="huifuP">
+                                        <div style="color: gray;">0</div>
+                                        <div>👍</div>
+                                        <div style="color: gray;">回复</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="fenge">
+                                _________________________________________________________________________________________________
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var panduan = 0;
+    var no = 1;
+    var play = document.getElementById("wp_playBtn");
+    var xiyangyang = document.getElementById("xiyangyang");
+    var mute = document.getElementById("mute");
+    var audio = document.getElementById("mymusic");
+    var Time = document.getElementById('opacity');
+    var bar = document.getElementById("wp_processBar");
+    var touxiang = document.getElementById('touxiang');
+    var pinglun = document.getElementById('area');
+    var num1 = document.getElementById('num1');
+    var fabu = document.getElementById('fabu');
+    var imgs = document.getElementById("touxiang");
+    var user = document.getElementById("user");
+    var pinglunshu = 0;
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    var currentdate = date.getFullYear() + "-" + month + "-" + date.getDate() + " " + date.getHours() + ":" + date
+        .getMinutes() + ":" + date.getSeconds();
+    // 播放
+    function aPlay() {
+        audio.play();
+        play.className = "zan";
+    }
+    // 暂停
+    function aPause() {
+        audio.pause();
+        play.className = "play";
+    }
+    play.onclick = function () {
+        if (panduan == 0) {
+            aPlay();
+            xiyangyang.style.animationPlayState = 'running';
+            panduan = 1;
+        } else {
+            aPause();
+            panduan = 0;
+        }
+    }
+
+    function formatTime(seconds) {
+        var h = 0,
+            i = 0,
+            s = Math.floor(seconds);
+        h = Math.floor(s / 3600);
+        i = Math.floor((s % 3600) / 60);
+        s = s % 3600 % 60;
+        return {
+            H: h = h < 10 ? "0" + h : h,
+            M: i = i < 10 ? "0" + i : i,
+            S: s = s < 10 ? "0" + s : s
+        };
+    };
+    //显示时间
+    setInterval(function () {
+        duration = formatTime(audio.duration);
+        currenttime = formatTime(audio.currentTime);
+        Time.innerHTML = currenttime.M + ':' + currenttime.S;
+        var percent = currenttime / duration;
+        var swidth = (percent * 200) + 730 + "px";
+        bar.style.left = swidth;
+    }, 1000)
+    //静音
+    mute.onclick = function () {
+        if (audio.muted) {
+            audio.muted = false;
+            mute.className = "bujingyin";
+        } else {
+            audio.muted = true;
+            mute.className = "jingyin";
+        }
+    }
+    document.onkeydown = function () {
+        var len = document.getElementById('area').value.length + 1;
+        document.getElementById('num2').innerHTML = len;
+    }
+    document.getElementById('fabu').onclick = function () {
+        pinglunshu++;
+        num1.innerText = pinglunshu;
+        touxiang.value = '';
+    }
+    fabu.onclick = function () {
+        var url = touxiang.src;
+        var json = {
+            username: user.value,
+            picture: url,
+            time: date,
+            zi: pinglun.value
+        };
+        var jsonstr = JSON.stringify(json);
+        window.localStorage.setItem(no, jsonstr);
+        no++;
+        show();
+    }
+
+    function show() {
+        var con = document.createElement("div");
+    }
+</script>
+
+</html>
